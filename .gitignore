@@ -47,8 +47,6 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore Byebug command history file.
-.byebug_history
 .vscode
 Dockerfile
 docker-compose.yml
