@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heroes and Villains</title>
+    <link rel="shortcut icon" href="assets/logo.png"/>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body  class="<%= controller_name %>-<%= action_name %>">
+    <header>
+      <%= render "shared/navbar" %>
+    </header>
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
+
+    <% flash.each do |message_type, message| %>
+      <% if message_type == 'alert' %>
+        <%= javascript_tag "Materialize.toast('#{message}', 4000, 'red')" %>
+      <% else message_type == 'notice' %>
+        <%= javascript_tag "Materialize.toast('#{message}', 4000, 'green')" %>
+      <% end %>
+    <% end %>
+
+  </body>
+</html>

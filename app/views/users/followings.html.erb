@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col s12 m12 l4">
+    <%= render 'shared/user_info' %>
+  </div>
+  <div class="col l1"></div>
+  <div class="col l7 page-content">
+    <h4 class="follow-title">Following</h4>
+    <%= render 'shared/list_user', users: @following %>
+  </div>
+</div>

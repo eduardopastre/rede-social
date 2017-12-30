@@ -1,0 +1,10 @@
+<%= form_for post, remote: true do |f| %>
+  <div class="input-field">
+    <%= f.text_area :body, placeholder: "What are you thinking about?", class: "materialize-textarea col l9" %>
+  </div>
+  <% if post.new_record? %>
+    <%= f.submit "Send", class: "btn red lighten-2" %>
+  <% else %>
+    <%= f.submit "Update", class: "btn red lighten-2" %>
+  <% end %>
+<% end %>

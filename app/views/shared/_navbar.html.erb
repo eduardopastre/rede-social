@@ -1,0 +1,78 @@
+<div class="navbar-fixed">
+  <nav class="top-nav">
+    <div class="nav-wrapper col s12">
+      <div class="container nav_container">
+        <div class="row nav_row">
+          <div class="col m3">
+            <% if current_user %>
+              <a href="/posts" class="brand-logo">
+                <%= image_tag "logo.png", id: "navbar_logo" %>
+              </a>
+            <% else %>
+              <a href="/" class="brand-logo">
+                <%= image_tag "logo.png", id: "navbar_logo" %>
+              </a>
+            <% end %>
+            <a href="#" data-activates="side-bar" class="button-collapse"><i class="material-icons">menu</i></a>
+          </div>
+ 
+          <ul class="right hide-on-med-and-down">
+            <% if current_user %>
+              <div class="row nav_row">
+                <div class="col m7 offset-m3">
+                  <li class="search-field">
+                    <%= search_form_for @q, url: search_path do |f| %>
+                      <%= f.search_field :name_cont, placeholder: "Search..." %>
+                    <% end %>
+                  </li>
+                </div>
+                <div id="foto_perfil" class="col m2">
+                  <li class="avatar" >
+                    <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                      <% if current_user.avatar.present? %>
+                        <img src="<%= current_user.avatar.thumb.url %>" alt="" class="responsive-img circle nav-image">
+                      <% else %>
+                        <%= image_tag "ic_perfil.png", class: "responsive-img circle nav-image" %>
+                      <% end %>
+                    </a>
+                  </li>
+                </div>
+ 
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><%= link_to 'Profile', user_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+                </ul>
+              </div>
+            <% else %>
+              <li><a href="/users/sign_in">Login</a></li>
+              <li><a href="/users/sign_up">Register</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+ 
+<ul class="side-nav" id="side-bar">
+  <% if current_user %>
+    <li class="search-field">
+      <%= search_form_for @q, url: search_path do |f| %>
+        <%= f.search_field :name_cont, placeholder: "Search.." %>
+      <% end %>
+    </li>
+    <li><%= link_to 'Feed', posts_path %></li>
+    <li><%= link_to 'Profile', user_path(current_user) %></li>
+    <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
+    <li><div class="divider"></div></li>
+    <li>  <%= link_to('Log out', destroy_user_session_path, :method => :delete) %></li>
+  <% else %>
+    <li><a href="/users/sign_in">Log in</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/users/sign_up">Register</a></li>
+    <li><div class="divider"></div></li>
+  <% end %>
+</ul>

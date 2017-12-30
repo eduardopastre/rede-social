@@ -1,0 +1,40 @@
+nav{
+  height: 100px;
+  background-color: #000;
+  .brand-logo{
+    margin-left: 10px;
+    .logo-title{
+      font-size: 20px;
+    }
+  }
+ 
+  .nav-image {
+    width: 50px;
+    margin-top: 8px;
+  }
+}
+ 
+.search-field {
+  margin-right: 400px;
+  width: 300px;
+}
+
+#foto_perfil li {
+  li.avatar {
+    height: 84px;
+  }
+  a {
+    height: 100%;
+  }
+}
+
+.nav_container {
+  height: 66px;
+  .nav_row {
+    height: 66px;
+  }
+}
+
+#navbar_logo {
+  height: 100px;
+}
